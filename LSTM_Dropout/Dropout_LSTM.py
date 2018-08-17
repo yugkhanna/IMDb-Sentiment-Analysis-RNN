@@ -7,8 +7,15 @@ vocabulary_size = 7000
 from keras.preprocessing import sequence
 
 max_words = 400
-X_train = sequence.pad_sequences(X_train, maxlen=max_words)
-X_test = sequence.pad_sequences(X_test, maxlen=max_words)
+X_train = sequence.pad_sequences(X_train, maxlen=max_words) # padding the max_number of words we take in for reviews for training
+X_test = sequence.pad_sequences(X_test, maxlen=max_words) # padding the max_number of words we take in for reviews for testing.
+
+"""
+Padding makes sure that reviews lenghts are same in the input vector
+by truncating the longer reviews and adding 0's where the review length
+is shorter than 400 words.
+
+"""
 
 from keras import Sequential
 from keras.layers import Embedding, LSTM, Dense, Dropout, MaxPool1D, Conv1D, Conv2D
